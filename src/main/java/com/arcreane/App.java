@@ -8,6 +8,7 @@ import com.arcreane.service.MovieService;
 import com.arcreane.service.MovieServiceInterface;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 /**
@@ -21,34 +22,21 @@ public class App {
         MovieServiceInterface service = null;
         MovieRepositoryInterface repository = null;
 
-        System.out.println("Which Controller do you want to use");
-        System.out.println(" - Controller");
-        String choice = scanner.nextLine();
-        switch (choice.toLowerCase()) {
-            case "controller" -> {
-                movieController = new MovieController();
-            }
-        }
+        try {
+            System.out.println("Which Controller do you want to use");
+            String choice = scanner.nextLine();
+            movieController = (MovieController) Class.forName(choice).getDeclaredConstructor().newInstance();
 
-        System.out.println("Which Service do you want to use");
-        System.out.println(" - Service");
-        choice = scanner.nextLine();
-        switch (choice.toLowerCase()) {
-            case "service" -> {
-                service = new MovieService();
-            }
-        }
+            System.out.println("Which Service do you want to use");
+            choice = scanner.nextLine();
+            service = (MovieServiceInterface) Class.forName(choice).getDeclaredConstructor().newInstance();
 
-        System.out.println("Which repository do you want to use");
-        System.out.println(" - Memory \n - File");
-        choice = scanner.nextLine();
-        switch (choice.toLowerCase()) {
-            case "controller" -> {
-                repository = new MemoryRepository();
-            }
-            case "file" -> {
-                repository = new FileRepository();
-            }
+            System.out.println("Which repository do you want to use");
+            choice = scanner.nextLine();
+            repository = (MovieRepositoryInterface) Class.forName(choice).getDeclaredConstructor().newInstance();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
         service.setMovieRepositoryInterface(repository);
