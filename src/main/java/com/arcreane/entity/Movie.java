@@ -6,7 +6,6 @@ public class Movie {
 
     public Movie() {
     }
-
     public Movie(String m_sTitle, String m_sType) {
         this.m_sTitle = m_sTitle;
         this.m_sType = m_sType;
@@ -25,5 +24,10 @@ public class Movie {
 
     public void setM_sTitle(String m_sTitle) {
         this.m_sTitle = m_sTitle;
+    }
+
+    @Override
+    public String toString() {
+        return m_sTitle+";"+m_sType;
     }
 }

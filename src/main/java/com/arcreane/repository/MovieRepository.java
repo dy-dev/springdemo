@@ -5,7 +5,7 @@ import com.arcreane.entity.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieRepository {
+public class MovieRepository implements MovieRepositoryInterface {
     static List<Movie> s_Movies = new ArrayList<>();
 
     public void add(Movie p_Movie){
