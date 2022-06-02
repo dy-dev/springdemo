@@ -2,15 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
 
     <bean class="com.arcreane.controller.MovieController">
-        <property name="service" ref = "service"/>
     </bean>
-    <bean id ="service" class="com.arcreane.service.MovieService">
-        <property name="repository" ref = "repository"/>
+    <bean id="service" class="com.arcreane.service.MovieService">
     </bean>
     <bean id="repository" class="com.arcreane.repository.FileRepository">
+        <property name="file" value="D:\\Ecoles\\Webstart\\2021-2022\\Dev3\\tmp\\Movie.csv"/>
     </bean>
 
 
