@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd"
-       default-autowire="byName">
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean class="com.arcreane.controller.MovieController">
-    </bean>
-    <bean id="service" class="com.arcreane.service.MovieService">
-    </bean>
-    <bean id="repository" class="com.arcreane.repository.FileRepository">
-        <property name="file" value="D:\\Ecoles\\Webstart\\2021-2022\\Dev3\\tmp\\Movie.csv"/>
-    </bean>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.arcreane"/>
+
+    <!--    <bean class="com.arcreane.com.arcreane.controller.MovieController"/>-->
+    <!--    <bean class="com.arcreane.com.arcreane.service.MovieService"/>-->
+    <!--    <bean class="com.arcreane.com.arcreane.repository.FileRepository">-->
+    <!--        <property name="file" value="D:\\Ecoles\\Webstart\\2021-2022\\Dev3\\tmp\\Movie.csv"/>-->
+    <!--    </bean>-->
 
 
 </beans>
