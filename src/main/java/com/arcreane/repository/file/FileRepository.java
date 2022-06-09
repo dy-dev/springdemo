@@ -1,6 +1,7 @@
-package com.arcreane.repository;
+package com.arcreane.repository.file;
 
 import com.arcreane.entity.Movie;
+import com.arcreane.repository.MovieRepositoryInterface;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,13 +19,14 @@ public class FileRepository implements MovieRepositoryInterface {
     private
     @Getter
     @Setter
-    @Value("D:\\Ecoles\\Webstart\\2021-2022\\Dev3\\tmp\\Movie.csv")
+    @Value("${file_path}")
     File file;
 
     public void add(Movie p_Movie) {
         FileWriter fileWriter;
         try {
 //            fileWriter = new FileWriter("./tmp.txt", true);
+            System.out.println(file.getPath());
             fileWriter = new FileWriter(file, true);
             fileWriter.write(p_Movie.toString() + "\n");
             fileWriter.close();
